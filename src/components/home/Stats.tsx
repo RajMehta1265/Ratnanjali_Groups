@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/site/RevealOnScroll";
 
 const stats = [
-  { v: 18, suffix: "+", l: "Years of Experience", k: "Crafting since 2007" },
+  { v: 15, suffix: "+", l: "Years of Experience", k: "Crafting since 2007" },
   { v: 25, suffix: "+", l: "Projects Delivered", k: "Across Ahmedabad" },
   { v: 3.2, suffix: "M", l: "Sq.Ft. Developed", k: "Residential & commercial", decimals: 1 },
   { v: 4200, suffix: "+", l: "Families Served", k: "Trusted homeowners" },

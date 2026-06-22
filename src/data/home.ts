@@ -24,7 +24,7 @@ export const homeData = {
       ]
     },
     stats: [
-      { value: "18+", label: "Years of Craft" },
+      { value: "15+", label: "Years of Experience" },
       { value: "25+", label: "Landmark Projects" },
       { value: "3.2M", label: "Sq.Ft. Developed" },
       { value: "4,200+", label: "Families Served" }
