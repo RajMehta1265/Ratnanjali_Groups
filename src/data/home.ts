@@ -7,7 +7,7 @@ export const homeData = {
       boldText: "Creating Value."
     },
     description: "For nearly two decades, Ratnanjali Group has been shaping the skyline of Ahmedabad — crafting residences, commercial avenues, and weekend estates that stand as testimonies to vision, craft and trust.",
-    bgImage: "https://cdn.sanity.io/images/72qij255/production/4c6c1388d2ba76b493423eb5bb871efd69a19a49-1920x1080.jpg",
+    bgImage: "https://cdn.sanity.io/images/72qij255/production/0684350dd063402c03901fdecb4e0f2a03760f3f-1024x362.png",
     founders: {
       eyebrow: "Founding Leadership",
       list: [
@@ -45,7 +45,7 @@ export const homeData = {
       { num: "01", title: "Residential", desc: "Towering apartments and heritage villas designed around light, air and family.", img: "https://cdn.sanity.io/images/72qij255/production/c8faeff845ac36e0d3fb3e746874d9d20bc6fed1-2377x1351.jpg", to: "/projects" },
       { num: "02", title: "Commercial", desc: "Showrooms, offices and garden workspaces at the city's most prestigious addresses.", img: "https://cdn.sanity.io/images/72qij255/production/7e4c6d81b064cb56d958e98b0e752771b3cbebf7-2846x2058.jpg", to: "/projects" },
       { num: "03", title: "Hospitality", desc: "Weekend estates, resorts and lifestyle clubhouses immersed in nature.", img: "https://cdn.sanity.io/images/72qij255/production/156845d757ed90274f8579fad93d5584a06003d9-604x639.jpg", to: "/projects" },
-      { num: "04", title: "Mixed Use", desc: "Integrated destinations that bring living, working and leisure into one canvas.", img: "https://cdn.sanity.io/images/72qij255/production/04c59c86a8025cfc424cee2579d44411f28c454b-1667x1210.jpg", to: "/projects" }
+      { num: "04", title: "Mixed Use", desc: "Integrated destinations that bring living, working and leisure into one canvas.", img: "https://cdn.sanity.io/images/72qij255/production/4b17f9874aedc68d58fb3a5d3d8b6a98e1d3794f-995x660.jpg", to: "/projects" }
     ]
   },
   upcomingProject: {

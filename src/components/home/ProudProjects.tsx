@@ -9,7 +9,7 @@ const AUTO_MS = 5500;
 const TRANSITION_MS = 1100;
 
 export function ProudProjects() {
-  const list = projects.slice(0, 4);
+  const list = projects.filter((p) => p.slug !== "hastinapur").slice(0, 3);
   // Duplicate first slide at the end for seamless loop
   const slides = [...list, list[0]];
   const [idx, setIdx] = useState(0);
@@ -116,18 +116,16 @@ export function ProudProjects() {
               <button
                 aria-label="Previous project"
                 onClick={goPrev}
-                className={`absolute left-5 top-1/2 z-40 flex h-14 w-14 -translate-y-1/2 items-center justify-center border border-white/40 bg-foreground/30 text-white backdrop-blur-md transition-all duration-500 hover:bg-white hover:text-foreground ${
-                  hover ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
-                }`}
+                className={`absolute left-5 top-1/2 z-40 flex h-14 w-14 -translate-y-1/2 items-center justify-center border border-white/40 bg-foreground/30 text-white backdrop-blur-md transition-all duration-500 hover:bg-white hover:text-foreground ${hover ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
+                  }`}
               >
                 <ArrowLeft size={18} strokeWidth={1.5} />
               </button>
               <button
                 aria-label="Next project"
                 onClick={goNext}
-                className={`absolute right-5 top-1/2 z-40 flex h-14 w-14 -translate-y-1/2 items-center justify-center border border-white/40 bg-foreground/30 text-white backdrop-blur-md transition-all duration-500 hover:bg-white hover:text-foreground ${
-                  hover ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0"
-                }`}
+                className={`absolute right-5 top-1/2 z-40 flex h-14 w-14 -translate-y-1/2 items-center justify-center border border-white/40 bg-foreground/30 text-white backdrop-blur-md transition-all duration-500 hover:bg-white hover:text-foreground ${hover ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0"
+                  }`}
               >
                 <ArrowRight size={18} strokeWidth={1.5} />
               </button>
