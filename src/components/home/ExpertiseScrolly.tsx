@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import hastinapur from "@/assets/projects/hastinapur-night.jpg.asset.json";
-import square from "@/assets/projects/square-hero.jpg.asset.json";
-import ayodhya from "@/assets/projects/ayodhya-pathway.jpg.asset.json";
-import solitaire from "@/assets/projects/solitaire-detail.jpg.asset.json";
+import { homeData } from "@/data/home";
 
 interface Chapter {
   num: string;
@@ -13,12 +10,12 @@ interface Chapter {
   img: string;
 }
 
-const chapters: Chapter[] = [
-  { num: "01", title: "Residential", desc: "Towering apartments and heritage villas designed around light, air and family.", img: hastinapur.url },
-  { num: "02", title: "Commercial", desc: "Showrooms, offices and garden workspaces at the city's most prestigious addresses.", img: square.url },
-  { num: "03", title: "Hospitality", desc: "Weekend estates, resorts and lifestyle clubhouses immersed in nature.", img: ayodhya.url },
-  { num: "04", title: "Mixed Use", desc: "Integrated destinations that bring living, working and leisure into one canvas.", img: solitaire.url },
-];
+const chapters: Chapter[] = homeData.expertise.sectors.map((s) => ({
+  num: s.num,
+  title: s.title,
+  desc: s.desc,
+  img: s.img,
+}));
 
 // Final quadrant positions (matching the original 2×2 grid)
 const quadrants = [

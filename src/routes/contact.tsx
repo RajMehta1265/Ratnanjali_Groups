@@ -3,6 +3,8 @@ import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { contactData } from "@/data/contact";
+import { ShlokaKicker } from "@/components/heritage/ShlokaKicker";
+import { HeritageDivider } from "@/components/heritage/HeritageDivider";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,18 +21,48 @@ function ContactPage() {
 
   return (
     <PageShell>
-      <section className="pb-12 pt-40 lg:pt-48">
-        <div className="container-x mx-auto max-w-[1400px]">
-          <div className="eyebrow eyebrow-gold mb-6"><span className="rule" />{hero.eyebrow}</div>
-          <h1 className="max-w-5xl font-display text-6xl leading-[1.02] sm:text-7xl lg:text-8xl tracking-tight kerning-tight">
-            {hero.titleText} <br className="hidden sm:block" />
-            <em className="text-foreground/70">{hero.titleItalic}</em>
-          </h1>
+      {/* Hero */}
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://cdn.sanity.io/images/72qij255/production/a79b3a9ad16309e1af0de10353f33be64a039a83-739x415.jpg"
+            alt="Cover background"
+            className="h-full w-full object-cover opacity-25"
+          />
+          {/* Dark overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/80 via-basalt/60 to-basalt/95" />
+          <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
+          <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-15" />
+        </div>
+
+        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center">
+          <Reveal>
+            <div className="flex items-center justify-center gap-5 mb-4">
+              <span className="h-px w-10 bg-gold/40" />
+              <span className="eyebrow eyebrow-gold">{hero.eyebrow}</span>
+              <span className="h-px w-10 bg-gold/40" />
+            </div>
+            <ShlokaKicker light className="mb-6">
+              Open to every visitor, every question, every dream
+            </ShlokaKicker>
+            <h1 className="max-w-5xl font-display text-6xl leading-[1.02] sm:text-7xl lg:text-8xl tracking-wide text-gold-soft font-semibold">
+              {hero.titleText} <br className="hidden sm:block" />
+              <em className="font-heading italic text-gold-soft/50">{hero.titleItalic}</em>
+            </h1>
+          </Reveal>
+          <div className="mt-12 w-full max-w-md mx-auto">
+            <HeritageDivider variant="chakra" />
+          </div>
         </div>
       </section>
 
-      <section className="py-16 lg:py-24">
-        <div className="container-x mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
+      {/* Form + Office */}
+      <section className="py-16 lg:py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-jali pointer-events-none opacity-30" />
+
+        <div className="container-x relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
+          {/* Form */}
           <Reveal className="lg:col-span-7">
             <form className="grid gap-6" onSubmit={(e) => { e.preventDefault(); }}>
               <div className="grid gap-6 sm:grid-cols-2">
@@ -39,8 +71,10 @@ function ContactPage() {
               </div>
               <Field label="Email" name="email" type="email" />
               <div>
-                <label className="mb-2 block text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Interested In</label>
-                <select className="w-full border border-border bg-transparent px-0 py-3 text-base text-foreground outline-none focus:border-foreground">
+                <label className="mb-2 block font-label text-[10px] uppercase tracking-[0.25em] text-gold/60">
+                  Interested In
+                </label>
+                <select className="w-full border-b border-gold/20 bg-transparent px-0 py-3 font-body text-base text-foreground outline-none focus:border-gold transition-colors">
                   {form.interestedOptions.map((opt) => (
                     <option key={opt}>{opt}</option>
                   ))}
@@ -48,38 +82,64 @@ function ContactPage() {
               </div>
 
               <div>
-                <label className="mb-2 block text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Message</label>
-                <textarea rows={5} className="w-full border border-border bg-transparent px-0 py-3 text-base text-foreground outline-none focus:border-foreground" />
+                <label className="mb-2 block font-label text-[10px] uppercase tracking-[0.25em] text-gold/60">
+                  Message
+                </label>
+                <textarea
+                  rows={5}
+                  className="w-full border-b border-gold/20 bg-transparent px-0 py-3 font-body text-base text-foreground outline-none focus:border-gold transition-colors"
+                />
               </div>
-              <button type="submit" className="mt-4 w-fit bg-foreground px-10 py-4 text-[12px] uppercase tracking-[0.24em] text-background transition-colors hover:bg-foreground/85">
+              <button
+                type="submit"
+                className="mt-4 w-fit border border-gold/40 bg-gold/10 px-10 py-4 font-label text-[11px] uppercase tracking-[0.24em] text-gold-soft transition-all gold-shimmer hover:bg-gold/20 hover:border-gold/60"
+              >
                 Send Enquiry
               </button>
             </form>
           </Reveal>
 
+          {/* Office info */}
           <Reveal delay={1} className="lg:col-span-5">
-            <div className="border border-border bg-stone-soft p-10">
-              <div className="eyebrow eyebrow-gold mb-6">{office.eyebrow}</div>
-              <div className="space-y-6 text-sm">
-                <div className="flex gap-4">
-                  <MapPin size={18} className="mt-0.5 shrink-0 text-gold" />
-                  <p className="leading-relaxed">
-                    {office.address.map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        <br />
-                      </span>
-                    ))}
-                  </p>
+            <div className="relative border border-gold/10 bg-basalt p-10 overflow-hidden">
+              <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-20" />
+              <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
+
+              <div className="relative">
+                <div className="font-label text-[10px] uppercase tracking-[0.3em] text-gold/50 mb-6">
+                  {office.eyebrow}
                 </div>
-                <div className="flex gap-4"><Phone size={18} className="mt-0.5 shrink-0 text-gold" /><p>{office.phone}</p></div>
-                <div className="flex gap-4"><Mail size={18} className="mt-0.5 shrink-0 text-gold" /><p>{office.email}</p></div>
+                <div className="space-y-6 text-sm">
+                  <div className="flex gap-4">
+                    <MapPin size={18} className="mt-0.5 shrink-0 text-gold/60" />
+                    <p className="font-body leading-relaxed text-gold-soft/60">
+                      {office.address.map((line, i) => (
+                        <span key={i}>
+                          {line}
+                          <br />
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                  <div className="flex gap-4">
+                    <Phone size={18} className="mt-0.5 shrink-0 text-gold/60" />
+                    <p className="font-body text-gold-soft/60">{office.phone}</p>
+                  </div>
+                  <div className="flex gap-4">
+                    <Mail size={18} className="mt-0.5 shrink-0 text-gold/60" />
+                    <p className="font-body text-gold-soft/60">{office.email}</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="mt-6 aspect-[4/3] w-full overflow-hidden border border-border bg-stone">
-              <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-                <span className="text-[11px] uppercase tracking-[0.24em]">{office.mapPlaceholder}</span>
+            {/* Map placeholder — dark/gold themed */}
+            <div className="mt-6 aspect-[4/3] w-full overflow-hidden border border-gold/10 bg-basalt relative">
+              <div className="absolute inset-0 bg-grain-dark" />
+              <div className="flex h-full w-full items-center justify-center">
+                <span className="font-label text-[10px] uppercase tracking-[0.28em] text-gold/30">
+                  {office.mapPlaceholder}
+                </span>
               </div>
             </div>
           </Reveal>
@@ -92,9 +152,18 @@ function ContactPage() {
 function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
   return (
     <div>
-      <label htmlFor={name} className="mb-2 block text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{label}</label>
-      <input id={name} name={name} type={type} className="w-full border-b border-border bg-transparent px-0 py-3 text-base text-foreground outline-none transition-colors focus:border-foreground" />
+      <label
+        htmlFor={name}
+        className="mb-2 block font-label text-[10px] uppercase tracking-[0.25em] text-gold/60"
+      >
+        {label}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        className="w-full border-b border-gold/20 bg-transparent px-0 py-3 font-body text-base text-foreground outline-none transition-colors focus:border-gold"
+      />
     </div>
   );
 }
-

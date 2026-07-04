@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { aboutData } from "@/data/about";
+import { ShlokaKicker } from "@/components/heritage/ShlokaKicker";
+import { HeritageDivider } from "@/components/heritage/HeritageDivider";
+import { DharmaWheel } from "@/components/heritage/DharmaWheel";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -13,66 +16,142 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+/* Timeline milestones */
+const timeline = [
+  { year: "2007", event: "Ratnanjali Group founded in Ahmedabad" },
+  { year: "2012", event: "First landmark residential project delivered" },
+  { year: "2016", event: "Expansion into commercial development" },
+  { year: "2019", event: "Ratnaruchi Vatika — riverside living at Paldi" },
+  { year: "2022", event: "Ratnanjali Square completed — new address of success" },
+  { year: "2024", event: "Hastinapur Village announced — five iconic towers" },
+  { year: "2025", event: "Ratnanjali Solitaire & Ayodhya underway" },
+];
+
 function AboutPage() {
   const { hero, ourStory, missionVision, founders, partners } = aboutData;
 
   return (
     <PageShell>
-      <section className="pb-20 pt-40 lg:pt-48">
-        <div className="container-x mx-auto max-w-[1400px]">
-          <div className="eyebrow eyebrow-gold mb-6"><span className="rule" />{hero.eyebrow}</div>
-          <h1 className="max-w-5xl font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl kerning-tight">
-            {hero.title} <em className="text-foreground/70">{hero.titleItalic}</em>
-          </h1>
+      {/* Hero */}
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://cdn.sanity.io/images/72qij255/production/a79b3a9ad16309e1af0de10353f33be64a039a83-739x415.jpg"
+            alt="Cover background"
+            className="h-full w-full object-cover opacity-25"
+          />
+          {/* Dark overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/80 via-basalt/60 to-basalt/95" />
+          <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
+          <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-15" />
+        </div>
+
+        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center">
+          <Reveal>
+            <div className="flex items-center justify-center gap-5 mb-4">
+              <span className="h-px w-10 bg-gold/40" />
+              <span className="eyebrow eyebrow-gold">{hero.eyebrow}</span>
+              <span className="h-px w-10 bg-gold/40" />
+            </div>
+            <ShlokaKicker light className="mb-6">
+              A legacy carved in stone, measured in trust
+            </ShlokaKicker>
+            <h1 className="max-w-5xl font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl tracking-wide text-gold-soft font-semibold">
+              {hero.title}{" "}
+              <em className="font-heading italic text-gold-soft/50">{hero.titleItalic}</em>
+            </h1>
+          </Reveal>
+          <div className="mt-12 w-full max-w-md mx-auto">
+            <HeritageDivider variant="wave" />
+          </div>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="container-x mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
+      {/* Story + Founders */}
+      <section className="relative py-20 bg-background overflow-hidden">
+        <div className="absolute inset-0 bg-jali pointer-events-none opacity-40" />
+
+        <div className="container-x relative mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-12">
+          {/* Story image with carved frame */}
           <Reveal className="lg:col-span-5">
-            <img src={ourStory.coverImage} alt="Our Story Cover" className="aspect-[4/5] w-full object-cover shadow-lg border border-border/40" loading="lazy" />
+            <div className="group relative carved-frame-hover">
+              <div className="carved-corner carved-corner-tl" />
+              <div className="carved-corner carved-corner-tr" />
+              <div className="carved-corner carved-corner-bl" />
+              <div className="carved-corner carved-corner-br" />
+              <img
+                src={ourStory.coverImage}
+                alt="Our Story Cover"
+                className="aspect-[4/5] w-full object-cover border border-gold/10 transition-transform duration-1000 group-hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </div>
           </Reveal>
+
           <div className="lg:col-span-7 lg:pt-8">
             <Reveal>
-              <h2 className="font-display text-3xl sm:text-4xl">{ourStory.title}</h2>
-              <p className="mt-6 text-[15px] leading-[1.85] text-foreground/75">
+              <h2 className="font-display text-3xl tracking-wide sm:text-4xl">{ourStory.title}</h2>
+              <p className="mt-6 font-body text-[15px] leading-[1.85] text-foreground/65">
                 {ourStory.description}
               </p>
             </Reveal>
+
+            {/* Mission & Vision */}
             <Reveal delay={1} className="mt-12 grid gap-8 sm:grid-cols-2">
-              <div>
+              <div className="border-l-2 border-gold/40 pl-5">
                 <div className="eyebrow eyebrow-gold mb-3">{missionVision.mission.title}</div>
-                <p className="text-sm leading-relaxed text-foreground/80">{missionVision.mission.desc}</p>
+                <p className="font-body text-sm leading-relaxed text-foreground/70">
+                  {missionVision.mission.desc}
+                </p>
               </div>
-              <div>
+              <div className="border-l-2 border-gold/40 pl-5">
                 <div className="eyebrow eyebrow-gold mb-3">{missionVision.vision.title}</div>
-                <p className="text-sm leading-relaxed text-foreground/80">{missionVision.vision.desc}</p>
+                <p className="font-body text-sm leading-relaxed text-foreground/70">
+                  {missionVision.vision.desc}
+                </p>
               </div>
             </Reveal>
-            
-            <Reveal delay={2} className="mt-16 border-t border-border pt-12">
+
+            <Reveal delay={1} className="mt-12">
+              <HeritageDivider variant="jali" />
+            </Reveal>
+
+            {/* Founders */}
+            <Reveal delay={2} className="mt-10 border-t border-border pt-12">
               <div className="eyebrow eyebrow-gold mb-8">{founders.eyebrow}</div>
               <div className="grid gap-8 md:grid-cols-2">
                 {founders.list.map((f) => (
-                  <div key={f.name} className="relative border border-border bg-stone-soft/30 p-8 shadow-sm transition-all hover:border-gold/50">
-                    <div className="absolute top-0 left-0 h-1 w-12 bg-gold" />
-                    <div className="font-display text-2xl font-semibold text-foreground">{f.name}</div>
-                    <div className="mt-1.5 font-mono text-[10px] uppercase tracking-widest text-gold-soft font-semibold">{f.role}</div>
-                    <p className="mt-4 text-[14px] leading-relaxed text-foreground/85">
-                      {f.bio}
-                    </p>
+                  <div
+                    key={f.name}
+                    className="group relative border border-gold/10 bg-stone-soft/20 p-8 transition-all hover:border-gold/30"
+                  >
+                    {/* Gold accent bar */}
+                    <div className="absolute top-0 left-0 h-1 w-12 bg-gradient-to-r from-gold to-gold-soft transition-all duration-500 group-hover:w-20" />
+                    <div className="absolute inset-0 bg-jali pointer-events-none opacity-20" />
+
+                    <div className="relative">
+                      <div className="font-display text-2xl tracking-wide text-foreground">{f.name}</div>
+                      <div className="mt-1.5 font-label text-[9px] uppercase tracking-[0.25em] text-gold">
+                        {f.role}
+                      </div>
+                      <p className="mt-4 font-body text-[14px] leading-relaxed text-foreground/70">
+                        {f.bio}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
             </Reveal>
 
+            {/* Partners */}
             <Reveal delay={3} className="mt-12 border-t border-border/50 pt-10">
               <div className="eyebrow eyebrow-gold mb-6">{partners.eyebrow}</div>
               <div className="grid gap-6 sm:grid-cols-2">
                 {partners.list.map((p) => (
-                  <div key={p.title} className="border-l-2 border-gold/60 pl-4">
-                    <div className="font-display text-base font-semibold">{p.title}</div>
-                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <div key={p.title} className="border-l-2 border-gold/30 pl-4">
+                    <div className="font-display text-base tracking-wide">{p.title}</div>
+                    <p className="mt-1 font-body text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
                 ))}
               </div>
@@ -80,8 +159,43 @@ function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Timeline — carved stone with gold dharma-chakra nodes */}
+      <section className="relative bg-basalt py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
+
+        <div className="container-x relative mx-auto max-w-[800px]">
+          <Reveal>
+            <div className="text-center mb-16">
+              <div className="eyebrow text-gold/50 mb-4">Our Journey</div>
+              <ShlokaKicker light>Each year, a spoke added to the wheel</ShlokaKicker>
+            </div>
+          </Reveal>
+
+          <div className="relative">
+            {/* Central vertical line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gold/15 -translate-x-1/2" />
+
+            {timeline.map((t, i) => (
+              <Reveal key={t.year} delay={(i % 3) as 0 | 1 | 2}>
+                <div className={`relative flex items-center gap-8 py-6 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div className={`flex-1 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                    <div className="font-display text-2xl gold-gradient-text tracking-wide">{t.year}</div>
+                    <p className="mt-1 font-body text-sm text-gold-soft/40">{t.event}</p>
+                  </div>
+
+                  {/* Dharma-chakra node */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <DharmaWheel size={28} color="var(--gold)" opacity={0.5} />
+                  </div>
+
+                  <div className="flex-1" />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
     </PageShell>
   );
 }
-
-

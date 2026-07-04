@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/site/RevealOnScroll";
-import { projects } from "@/lib/projects";
+import { projects } from "@/data/projects";
 
 export function FeaturedProjects() {
   const featured = projects.slice(0, 4);
