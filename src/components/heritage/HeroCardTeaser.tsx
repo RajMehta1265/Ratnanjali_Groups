@@ -36,7 +36,7 @@ export function HeroCardTeaser() {
   return (
     <div className="relative">
       {/* Shloka kicker */}
-      <p className="shloka-kicker mb-8 text-center text-gold-soft/50 font-medium">
+      <p className="shloka-kicker mb-8 text-center text-gold font-medium">
         — Four disciplines. One standard of craft —
       </p>
 

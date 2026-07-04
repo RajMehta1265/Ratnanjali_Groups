@@ -96,7 +96,8 @@ export function CategoryRow({ num, title, subtitle, items }: Props) {
         {items.map((p) => (
           <Link
             key={p.slug}
-            to="/projects"
+            to="/projects/$slug"
+            params={{ slug: p.slug }}
             data-card
             className="group relative block w-[78vw] shrink-0 overflow-hidden sm:w-[42vw] lg:w-[calc((100%-4rem)/3.1)] carved-frame-hover"
             style={{ scrollSnapAlign: "start" }}

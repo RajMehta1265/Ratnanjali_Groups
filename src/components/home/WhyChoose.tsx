@@ -41,23 +41,7 @@ export function WhyChoose() {
       <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
       <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-15" />
 
-      {/* Background video overlay */}
-      <div className="absolute inset-0 overflow-hidden">
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-10"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        >
-          <source
-            src="https://cdn.sanity.io/files/72qij255/production/eceb870ee451a6d05743a841f02b13293013646e.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 bg-basalt/80" />
-      </div>
+
 
       <div className="container-x relative mx-auto max-w-[1400px]">
         <Reveal className="max-w-3xl">

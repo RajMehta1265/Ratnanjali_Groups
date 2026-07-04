@@ -139,10 +139,10 @@ export function Hero() {
         </div>
       </section>
 
-      {/* Hero Card Teaser — below the hero fold */}
-      <section className="relative bg-basalt py-16 lg:py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
-        <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-20" />
+      {/* Hero Card Teaser — below the hero fold (Light Theme) */}
+      <section className="relative bg-background py-16 lg:py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grain pointer-events-none" />
+        <div className="absolute inset-0 bg-jali pointer-events-none opacity-10" />
         <div className="container-x relative mx-auto max-w-[1200px]">
           <HeroCardTeaser />
         </div>

@@ -101,8 +101,14 @@ export function ProudProjects() {
                 {slides.map((p, i) => {
                   const isAyodhya = p.slug === "ayodhya";
                   return (
-                    <div key={`${p.slug}-${i}`} className="relative h-full" style={{ width: `${100 / slides.length}%` }}>
-                      <img src={p.cover} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
+                    <Link
+                      key={`${p.slug}-${i}`}
+                      to="/projects/$slug"
+                      params={{ slug: p.slug }}
+                      className="relative h-full block overflow-hidden cursor-pointer group/slide"
+                      style={{ width: `${100 / slides.length}%` }}
+                    >
+                      <img src={p.cover} alt={p.name} className="h-full w-full object-cover transition-transform duration-700 group-hover/slide:scale-105" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-basalt/90 via-basalt/30 to-transparent" />
                       {/* Ayodhya — warm homecoming glow (Ramayana resonance) */}
                       {isAyodhya && (
@@ -129,7 +135,7 @@ export function ProudProjects() {
                           <div className="mt-6 h-px w-16 bg-gold/50" />
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

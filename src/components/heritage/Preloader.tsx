@@ -28,17 +28,14 @@ export function Preloader({ onComplete }: PreloaderProps) {
 
   useEffect(() => {
     // Check if already seen this session
-    const seen = sessionStorage.getItem("rg-preloader-seen");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (seen || reducedMotion) {
+    if (reducedMotion) {
       setPhase("done");
       setVisible(false);
       if (onComplete) onComplete();
       return;
     }
-
-    sessionStorage.setItem("rg-preloader-seen", "1");
 
     // Phase progression
     timerRef.current = setTimeout(() => setPhase("logo"), 1800);

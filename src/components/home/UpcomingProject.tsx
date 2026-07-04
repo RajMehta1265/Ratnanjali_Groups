@@ -86,42 +86,48 @@ export function UpcomingProject() {
           {/* Visual Showcase */}
           <div className="lg:col-span-6 relative">
             <Reveal className="relative group/visual carved-frame-hover">
-              {/* Outer hover frame */}
-              <div className="absolute -inset-4 border border-gold/5 scale-95 opacity-0 transition-all duration-700 group-hover/visual:scale-100 group-hover/visual:opacity-100 pointer-events-none" />
+              <Link
+                to="/projects/$slug"
+                params={{ slug: "hastinapur" }}
+                className="block cursor-pointer"
+              >
+                {/* Outer hover frame */}
+                <div className="absolute -inset-4 border border-gold/5 scale-95 opacity-0 transition-all duration-700 group-hover/visual:scale-100 group-hover/visual:opacity-100 pointer-events-none" />
 
-              {/* Image Container */}
-              <div className="relative aspect-[4/5] overflow-hidden border border-gold/15 bg-basalt shadow-elevated">
-                {/* Carved corners */}
-                <div className="carved-corner carved-corner-tl" />
-                <div className="carved-corner carved-corner-tr" />
-                <div className="carved-corner carved-corner-bl" />
-                <div className="carved-corner carved-corner-br" />
+                {/* Image Container */}
+                <div className="relative aspect-[4/5] overflow-hidden border border-gold/15 bg-basalt shadow-elevated">
+                  {/* Carved corners */}
+                  <div className="carved-corner carved-corner-tl" />
+                  <div className="carved-corner carved-corner-tr" />
+                  <div className="carved-corner carved-corner-bl" />
+                  <div className="carved-corner carved-corner-br" />
 
-                <img
-                  src={upcomingProject.coverImage}
-                  alt={`${upcomingProject.title} ${upcomingProject.titleItalic} rendering`}
-                  className="h-full w-full object-cover transition-transform duration-1000 group-hover/visual:scale-105"
-                  loading="lazy"
-                />
+                  <img
+                    src={upcomingProject.coverImage}
+                    alt={`${upcomingProject.title} ${upcomingProject.titleItalic} rendering`}
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover/visual:scale-105"
+                    loading="lazy"
+                  />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-basalt/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-basalt/60 via-transparent to-transparent pointer-events-none" />
 
-                {/* Overlay text */}
-                <div className="absolute bottom-6 left-6 right-6 text-white z-20 flex justify-between items-end">
-                  <div>
-                    <span className="font-label text-[9px] uppercase tracking-[0.3em] text-gold/50">
-                      Architectural Rendering
+                  {/* Overlay text */}
+                  <div className="absolute bottom-6 left-6 right-6 text-white z-20 flex justify-between items-end">
+                    <div>
+                      <span className="font-label text-[9px] uppercase tracking-[0.3em] text-gold/50">
+                        Architectural Rendering
+                      </span>
+                      <h3 className="font-display text-2xl mt-1 text-white tracking-wide">
+                        {upcomingProject.title} {upcomingProject.titleItalic}
+                      </h3>
+                    </div>
+                    {/* PRE-LAUNCH badge with gold pulse */}
+                    <span className="font-label text-[10px] uppercase tracking-[0.25em] text-gold gold-pulse px-3 py-1 border border-gold/30 bg-basalt/60">
+                      PRE-LAUNCH
                     </span>
-                    <h3 className="font-display text-2xl mt-1 text-white tracking-wide">
-                      {upcomingProject.title} {upcomingProject.titleItalic}
-                    </h3>
                   </div>
-                  {/* PRE-LAUNCH badge with gold pulse */}
-                  <span className="font-label text-[10px] uppercase tracking-[0.25em] text-gold gold-pulse px-3 py-1 border border-gold/30 bg-basalt/60">
-                    PRE-LAUNCH
-                  </span>
                 </div>
-              </div>
+              </Link>
             </Reveal>
           </div>
         </div>
