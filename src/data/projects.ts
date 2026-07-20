@@ -21,6 +21,7 @@ export interface Project {
   gallery: string[];
   description: string;
   highlights: string[];
+  brochure?: string;
 }
 
 export const projects: Project[] = [
@@ -44,6 +45,7 @@ export const projects: Project[] = [
     description:
       "A maverick residential project featuring five iconic towers, private foyers, and a comprehensive clubhouse — built for the modern royals.",
     highlights: ["5 Iconic Towers", "Private Foyer Per Unit", "60+ Amenities", "2 Cars Per Apartment"],
+    brochure: "/brochures/hastinapur.pdf",
   },
   {
     slug: "ratnanjali-square",
@@ -63,6 +65,7 @@ export const projects: Project[] = [
     description:
       "A spectacular glass-and-greenery business landmark in Prahladnagar — high-end showrooms, private garden offices, and a grand foyer that exudes prestige.",
     highlights: ["Glass Façade with Sky Gardens", "Private Garden Offices", "High-End Showrooms", "Grand Entrance Foyer"],
+    brochure: "/brochures/ratnanjali-square.pdf",
   },
   {
     slug: "ratnanjali-solitaire",
@@ -82,6 +85,7 @@ export const projects: Project[] = [
     description:
       "A swanky new-age business complex at the PDR crossroads — a signature edifice with hanging office spaces, spacious balconies, and green pockets throughout.",
     highlights: ["Hanging Architect Office", "Maximum Visibility", "Strategic PDR Location", "Multi-Format Retail"],
+    brochure: "/brochures/ratnanjali-solitaire.pdf",
   },
   {
     slug: "ayodhya",
@@ -101,6 +105,7 @@ export const projects: Project[] = [
     description:
       "A one-of-a-kind sustainable weekend estate — heritage pool villas, a 60,000 sq.ft. clubhouse, lake lagoon, Nakshatra Van, and an organic, vehicle-free township.",
     highlights: ["Heritage Pool Villas", "60,000 sq.ft. Clubhouse", "Lake Lagoon & Nakshatra Van", "Vehicle-Free Township"],
+    brochure: "/brochures/ayodhya.pdf",
   },
   {
     slug: "ratnaruchi-vatika",
@@ -117,6 +122,7 @@ export const projects: Project[] = [
     description:
       "Premium riverside apartments in Paldi — modern, spacious and exquisite homes a short walk from the Sabarmati Riverfront.",
     highlights: ["Walk to Riverfront", "Earthquake-Resistant", "Designed Main Gate", "Pollution-Free Zone"],
+    brochure: "/brochures/ratnaruchi-vatika.pdf",
   },
 ];
 

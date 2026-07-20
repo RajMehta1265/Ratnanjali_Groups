@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
-import { CategoryRow } from "@/components/projects/CategoryRow";
 import { projects } from "@/data/projects";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { ShlokaKicker } from "@/components/heritage/ShlokaKicker";
 import { HeritageDivider } from "@/components/heritage/HeritageDivider";
+import { ArrowRight, Download } from "lucide-react";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -17,12 +17,6 @@ export const Route = createFileRoute("/projects")({
 });
 
 function ProjectsPage() {
-  const exclusive = projects.slice(0, 4);
-  const residential = projects.filter((p) => p.category === "residential");
-  const commercial = projects.filter((p) => p.category === "commercial");
-  const hospitality = projects.filter((p) => p.category === "hospitality");
-  const mixedUse = projects.filter((p) => p.category === "mixed-use");
-
   return (
     <PageShell>
       {/* Hero header */}
@@ -56,9 +50,9 @@ function ProjectsPage() {
               <span className="text-gold-soft/40"> across Ahmedabad.</span>
             </h1>
             <p className="mt-8 max-w-xl mx-auto font-body text-base leading-[1.7] text-gold-soft/60 sm:text-lg">
-              A chronicle of our work — organised by chapter.
+              Explore our architectural masterpieces, designed to outlive trends.
               <br className="hidden sm:block" />
-              Move horizontally through each discipline.
+              Alternating layout displaying our diverse projects.
             </p>
           </Reveal>
           <div className="mt-12 w-full max-w-md mx-auto">
@@ -67,14 +61,111 @@ function ProjectsPage() {
         </div>
       </section>
 
-      {/* Category rows on warm background */}
-      <div className="space-y-0 bg-background">
-        <CategoryRow num="01" title="Exclusive" subtitle="A curated selection of our most defining work." items={exclusive} />
-        <CategoryRow num="02" title="Residential" subtitle="Apartments, villas and homes built around family life." items={residential} />
-        <CategoryRow num="03" title="Commercial" subtitle="Headquarters, business avenues and prestige offices." items={commercial} />
-        <CategoryRow num="04" title="Hospitality" subtitle="Weekend estates, resorts and clubhouses immersed in landscape." items={hospitality} />
-        <CategoryRow num="05" title="Mixed Use" subtitle="Integrated destinations bringing living, working and leisure together." items={mixedUse} />
-      </div>
+      {/* Alternating projects list */}
+      <section className="bg-background py-20 lg:py-32 relative">
+        <div className="absolute inset-0 bg-grain pointer-events-none opacity-50" />
+        <div className="container-x relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+          <div className="space-y-24 lg:space-y-40">
+            {projects.map((project, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div 
+                  key={project.slug} 
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center"
+                >
+                  {/* Image Column (Slightly larger col-span) */}
+                  <div className={`lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <Reveal>
+                      <Link
+                        to="/projects/$slug"
+                        params={{ slug: project.slug }}
+                        className="group relative block aspect-[16/10] w-full overflow-hidden border border-gold/10 bg-stone shadow-md hover:border-gold/30 transition-all duration-500 carved-frame-hover"
+                      >
+                        {/* Carved corner brackets */}
+                        <div className="carved-corner carved-corner-tl" />
+                        <div className="carved-corner carved-corner-tr" />
+                        <div className="carved-corner carved-corner-bl" />
+                        <div className="carved-corner carved-corner-br" />
+
+                        <img
+                          src={project.cover}
+                          alt={project.name}
+                          className="img-zoom h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-basalt/10 group-hover:bg-transparent transition-colors duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-basalt/40 via-transparent to-transparent pointer-events-none" />
+                      </Link>
+                    </Reveal>
+                  </div>
+
+                  {/* Content Column */}
+                  <div className={`lg:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <Reveal delay={1}>
+                      <div className="space-y-6 lg:space-y-8">
+                        {/* Category eyebrow */}
+                        <div className="flex items-center gap-3">
+                          <span className="font-label text-[11px] uppercase tracking-[0.25em] text-gold font-semibold">
+                            {project.categoryLabel}
+                          </span>
+                          <span className="h-px w-8 bg-gold/30" />
+                          <span className="font-label text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                            {project.location}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-foreground tracking-wide font-semibold">
+                          <Link 
+                            to="/projects/$slug"
+                            params={{ slug: project.slug }}
+                            className="hover:text-gold transition-colors duration-300"
+                          >
+                            {project.name}
+                          </Link>
+                        </h2>
+
+                        {/* Tagline */}
+                        <p className="font-heading text-xl sm:text-2xl italic text-gold-soft">
+                          {project.tagline}
+                        </p>
+
+                        {/* Description */}
+                        <p className="font-body text-base leading-[1.85] text-muted-foreground/90">
+                          {project.description}
+                        </p>
+
+                        {/* Action buttons */}
+                        <div className="flex flex-wrap items-center gap-5 pt-4">
+                          <Link
+                            to="/projects/$slug"
+                            params={{ slug: project.slug }}
+                            className="group inline-flex items-center gap-2 border border-gold/30 px-8 py-4 font-label text-[11px] uppercase tracking-[0.2em] text-gold-soft hover:bg-gold/10 hover:border-gold/60 transition-all duration-300 rounded-sm"
+                          >
+                            Explore Project
+                            <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                          </Link>
+
+                          {project.brochure && (
+                            <a
+                              href={project.brochure}
+                              download
+                              className="inline-flex items-center gap-2 border border-white/10 px-8 py-4 font-label text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground hover:bg-white/5 hover:border-white/20 transition-all duration-300 rounded-sm"
+                            >
+                              Download Brochure
+                              <Download size={12} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </Reveal>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </PageShell>
   );
 }

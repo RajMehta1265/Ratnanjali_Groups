@@ -11,15 +11,19 @@ export function Hero() {
   return (
     <>
       <section className="relative min-h-screen lg:h-screen lg:min-h-[750px] w-full overflow-hidden bg-basalt text-white">
-        {/* Background Image */}
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <img
-            src={hero.bgImage}
-            alt="Ratnanjali landmark residential tower at golden hour"
-            className="ken-burns h-full w-full object-cover opacity-35"
-            width={1920}
-            height={1280}
-          />
+          <video
+            className="h-full w-full object-cover opacity-35"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={hero.bgImage}
+          >
+            <source src="https://cdn.sanity.io/files/72qij255/production/438bf2b22125ef793784ebfa5f1d727e3cf1b537.mp4" type="video/mp4" />
+          </video>
           {/* Dark cinematic overlays */}
           <div className="absolute inset-0 bg-gradient-to-b from-basalt/70 via-basalt/40 to-basalt/90" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,transparent,rgba(0,0,0,0.5))]" />
@@ -89,42 +93,6 @@ export function Hero() {
                 >
                   Schedule a Visit
                 </Link>
-              </div>
-            </div>
-
-            {/* Founding Leadership — Right Side */}
-            <div className="lg:col-span-5 opacity-0 animate-[fade-up_1s_ease-out_1.2s_forwards] lg:mb-4">
-              <div className="relative border border-gold/15 bg-basalt/60 p-6 backdrop-blur-md overflow-hidden">
-                {/* Subtle jali pattern */}
-                <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-30" />
-
-                <div className="relative space-y-5">
-                  <div className="flex items-center gap-3">
-                    <span className="h-px w-6 bg-gold/50" />
-                    <span className="font-label text-[9px] font-medium uppercase tracking-[0.3em] text-gold/60">
-                      {hero.founders.eyebrow}
-                    </span>
-                  </div>
-
-                  <div className="space-y-4">
-                    {hero.founders.list.map((f, i) => (
-                      <div key={f.name}>
-                        {i > 0 && <div className="h-px bg-gold/10 my-4" />}
-                        <div>
-                          <div className="font-display text-lg font-semibold text-gold-soft flex justify-between items-baseline gap-2">
-                            <span>{f.name}</span>
-                            <span className="font-label text-[8px] font-medium uppercase tracking-[0.2em] text-gold/50 shrink-0">
-                              {f.role}
-                            </span>
-                          </div>
-                          <p className="mt-1.5 font-body text-[13px] font-medium text-white/60 leading-relaxed">
-                            {f.bio}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { projects } from "@/data/projects";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { ShlokaKicker } from "@/components/heritage/ShlokaKicker";
 import { HeritageDivider } from "@/components/heritage/HeritageDivider";
-import { ArrowLeft, MapPin, Calendar, LayoutGrid, CheckCircle2, Phone, Mail } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar, LayoutGrid, CheckCircle2, Phone, Mail, Download } from "lucide-react";
 
 export const Route = createFileRoute("/projects_/$slug")({
   loader: ({ params }) => {
@@ -16,8 +16,8 @@ export const Route = createFileRoute("/projects_/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData.project.name} — Ratnanjali Group` },
-      { name: "description", content: loaderData.project.description },
+      { title: `${loaderData?.project?.name || "Project"} — Ratnanjali Group` },
+      { name: "description", content: loaderData?.project?.description || "" },
     ],
   }),
   component: ProjectDetailPage,
@@ -132,6 +132,27 @@ function ProjectDetailPage() {
                         <div className="font-body text-sm font-semibold">{project.configuration}</div>
                       </div>
                     </div>
+
+                    {project.brochure && (
+                      <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gold/10">
+                        <div className="flex h-10 w-10 items-center justify-center bg-gold/10 text-gold border border-gold/20">
+                          <Download size={16} />
+                        </div>
+                        <div className="flex-1 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                          <div>
+                            <div className="font-label text-[9px] uppercase tracking-[0.2em] text-muted-foreground">Brochure</div>
+                            <div className="font-body text-sm font-semibold">Project Brochure</div>
+                          </div>
+                          <a
+                            href={project.brochure}
+                            download
+                            className="inline-flex items-center gap-2 px-4 py-2 border border-gold/30 hover:border-gold/60 text-[10px] font-label uppercase tracking-wider text-gold-soft hover:bg-gold/10 transition-all duration-300 rounded-sm"
+                          >
+                            Download <Download size={12} />
+                          </a>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Reveal>
