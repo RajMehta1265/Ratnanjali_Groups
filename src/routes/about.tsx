@@ -117,35 +117,8 @@ function AboutPage() {
               <HeritageDivider variant="jali" />
             </Reveal>
 
-            {/* Founders */}
-            <Reveal delay={2} className="mt-10 border-t border-border pt-12">
-              <div className="eyebrow eyebrow-gold mb-8">{founders.eyebrow}</div>
-              <div className="grid gap-8 md:grid-cols-2">
-                {founders.list.map((f) => (
-                  <div
-                    key={f.name}
-                    className="group relative border border-gold/10 bg-stone-soft/20 p-8 transition-all hover:border-gold/30"
-                  >
-                    {/* Gold accent bar */}
-                    <div className="absolute top-0 left-0 h-1 w-12 bg-gradient-to-r from-gold to-gold-soft transition-all duration-500 group-hover:w-20" />
-                    <div className="absolute inset-0 bg-jali pointer-events-none opacity-20" />
-
-                    <div className="relative">
-                      <div className="font-display text-2xl tracking-wide text-foreground">{f.name}</div>
-                      <div className="mt-1.5 font-label text-[9px] uppercase tracking-[0.25em] text-gold">
-                        {f.role}
-                      </div>
-                      <p className="mt-4 font-body text-[14px] leading-relaxed text-foreground/70">
-                        {f.bio}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
             {/* Partners */}
-            <Reveal delay={3} className="mt-12 border-t border-border/50 pt-10">
+            <Reveal delay={2} className="mt-12 border-t border-border/50 pt-10">
               <div className="eyebrow eyebrow-gold mb-6">{partners.eyebrow}</div>
               <div className="grid gap-6 sm:grid-cols-2">
                 {partners.list.map((p) => (
@@ -156,6 +129,67 @@ function AboutPage() {
                 ))}
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Who We Are (Founders) Standalone Section */}
+      <section className="relative py-24 lg:py-32 bg-stone-soft border-t border-border/40 overflow-hidden">
+        <div className="absolute inset-0 bg-grain pointer-events-none opacity-40" />
+        <div className="absolute inset-0 bg-jali pointer-events-none opacity-10" />
+
+        <div className="container-x relative mx-auto max-w-[1400px]">
+          <Reveal>
+            <div className="text-center mb-16 lg:mb-24">
+              <div className="eyebrow eyebrow-gold mb-4">{founders.eyebrow}</div>
+              <ShlokaKicker>Leadership forged in vision and integrity</ShlokaKicker>
+              <h2 className="mt-5 font-display text-4xl leading-tight sm:text-5xl tracking-wide text-foreground font-semibold">
+                The minds behind the landmarks.
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-12 lg:gap-16 lg:grid-cols-2">
+            {founders.list.map((f, index) => (
+              <Reveal key={f.name} delay={index as 0 | 1}>
+                <div className="group relative border border-gold/15 bg-background p-8 lg:p-12 transition-all hover:border-gold/30 hover:shadow-card flex flex-col md:flex-row gap-8 lg:gap-10 items-center md:items-start text-center md:text-left h-full">
+                  {/* Gold accent bar */}
+                  <div className="absolute top-0 left-0 h-1.5 w-16 bg-gradient-to-r from-gold to-gold-soft transition-all duration-500 group-hover:w-28" />
+                  <div className="absolute inset-0 bg-jali pointer-events-none opacity-[0.03]" />
+
+                  {/* Big image frame - 60-70% larger than the previous layout */}
+                  {('image' in f) && f.image && (
+                    <div className="relative aspect-[3/4] w-48 sm:w-56 shrink-0 overflow-hidden border border-gold/20 bg-stone shadow-md group-hover:border-gold/40 transition-colors duration-500 carved-frame-hover">
+                      {/* Carved corner brackets */}
+                      <div className="carved-corner carved-corner-tl !h-2.5 !w-2.5" />
+                      <div className="carved-corner carved-corner-tr !h-2.5 !w-2.5" />
+                      <div className="carved-corner carved-corner-bl !h-2.5 !w-2.5" />
+                      <div className="carved-corner carved-corner-br !h-2.5 !w-2.5" />
+                      <img
+                        src={f.image as string}
+                        alt={f.name}
+                        className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  <div className="relative flex-1 space-y-4">
+                    <div>
+                      <h3 className="font-display text-2xl sm:text-3xl tracking-wide text-foreground font-semibold group-hover:text-gold transition-colors duration-300">
+                        {f.name}
+                      </h3>
+                      <div className="mt-1.5 font-label text-[10px] uppercase tracking-[0.25em] text-gold font-semibold">
+                        {f.role}
+                      </div>
+                    </div>
+                    <p className="font-body text-[14px] leading-[1.8] text-foreground/75">
+                      {f.bio}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
