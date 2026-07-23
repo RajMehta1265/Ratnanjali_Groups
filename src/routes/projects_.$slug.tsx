@@ -29,27 +29,20 @@ function ProjectDetailPage() {
   return (
     <PageShell>
       {/* Dynamic cover section */}
-      <section className="relative h-[65vh] min-h-[480px] w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
         {/* Background Image */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Blurred background image to cover full container */}
-          <img
-            src={project.cover}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-25 blur-md scale-110"
-          />
-          {/* Centered contained foreground image to show it fully without cutting */}
+        <div className="absolute inset-0">
           <img
             src={project.cover}
             alt={project.name}
-            className="relative mx-auto h-full w-auto object-contain opacity-75 ken-burns"
+            className="ken-burns h-full w-full object-cover opacity-40"
           />
           {/* Dark cinematic overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-basalt/40 via-transparent to-basalt/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/60 via-basalt/30 to-basalt/95" />
           <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
         </div>
 
-        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center px-4 pt-28 pb-12">
+        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center px-4">
           <Reveal>
             <Link
               to="/projects"
