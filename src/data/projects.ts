@@ -117,8 +117,8 @@ export const projects: Project[] = [
     location: "Paldi, Ahmedabad",
     year: "2019",
     configuration: "Riverside 1 & 2 BHK",
-    cover: "https://cdn.sanity.io/images/72qij255/production/b66c01aee1aab307251f75fb8dfd5a50224c6975-7250x3000.jpg",
-    gallery: ["https://cdn.sanity.io/images/72qij255/production/b66c01aee1aab307251f75fb8dfd5a50224c6975-7250x3000.jpg"],
+    cover: "https://cdn.sanity.io/images/72qij255/production/985e4e9533a44ff92e7ea52091db7274caba847d-843x582.png",
+    gallery: ["https://cdn.sanity.io/images/72qij255/production/985e4e9533a44ff92e7ea52091db7274caba847d-843x582.png"],
     description:
       "Premium riverside apartments in Paldi — modern, spacious and exquisite homes a short walk from the Sabarmati Riverfront.",
     highlights: ["Walk to Riverfront", "Earthquake-Resistant", "Designed Main Gate", "Pollution-Free Zone"],
