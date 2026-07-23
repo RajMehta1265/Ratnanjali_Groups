@@ -4,9 +4,20 @@ import { homeData } from "@/data/home";
 import { GoldDustParticles } from "@/components/heritage/GoldDustParticles";
 import { HeroCardTeaser } from "@/components/heritage/HeroCardTeaser";
 import { HeritageDivider } from "@/components/heritage/HeritageDivider";
+import { useRef, useEffect } from "react";
 
 export function Hero() {
   const { hero } = homeData;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch((err) => {
+        console.warn("Hero background video autoplay failed:", err);
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -14,7 +25,8 @@ export function Hero() {
         {/* Background Video */}
         <div className="absolute inset-0">
           <video
-            className="h-full w-full object-cover opacity-35"
+            ref={videoRef}
+            className="h-full w-full object-cover opacity-100"
             autoPlay
             muted
             loop
@@ -24,9 +36,6 @@ export function Hero() {
           >
             <source src="https://cdn.sanity.io/files/72qij255/production/438bf2b22125ef793784ebfa5f1d727e3cf1b537.mp4" type="video/mp4" />
           </video>
-          {/* Dark cinematic overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-basalt/70 via-basalt/40 to-basalt/90" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,transparent,rgba(0,0,0,0.5))]" />
           {/* Subtle grain texture */}
           <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
         </div>
@@ -82,14 +91,14 @@ export function Hero() {
               <div className="mt-8 flex flex-wrap items-center gap-5 opacity-0 animate-[fade-up_0.8s_ease-out_1.1s_forwards]">
                 <Link
                   to="/projects"
-                  className="group inline-flex items-center gap-3 border border-gold/40 bg-gold/10 px-8 py-4 font-label text-[11px] font-medium uppercase tracking-[0.24em] text-gold-soft transition-all gold-shimmer hover:bg-gold/20 hover:border-gold/60"
+                  className="group inline-flex items-center gap-3 border border-gold/40 bg-gold/10 text-gold-soft px-8 py-4 font-label text-[11px] font-medium uppercase tracking-[0.24em] transition-all gold-shimmer hover:bg-gold/20 hover:border-gold/60"
                 >
                   Explore Portfolio
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center gap-3 border border-white/20 px-8 py-4 font-label text-[11px] font-medium uppercase tracking-[0.24em] text-white/80 transition-all hover:bg-white/5 hover:border-white/40"
+                  className="group inline-flex items-center gap-3 border border-white/20 text-white/80 px-8 py-4 font-label text-[11px] font-medium uppercase tracking-[0.24em] transition-all hover:bg-white/5 hover:border-white/40"
                 >
                   Schedule a Visit
                 </Link>
@@ -107,11 +116,11 @@ export function Hero() {
         </div>
       </section>
 
-      {/* Hero Card Teaser — below the hero fold (Light Theme) */}
+      {/* Hero Card Teaser — below the hero fold (Light Theme) — Expanded to at least 85% width */}
       <section className="relative bg-background py-16 lg:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-grain pointer-events-none" />
         <div className="absolute inset-0 bg-jali pointer-events-none opacity-10" />
-        <div className="container-x relative mx-auto max-w-[1200px]">
+        <div className="relative mx-auto w-[90%] lg:w-[85%] max-w-none">
           <HeroCardTeaser />
         </div>
         {/* Transition divider */}

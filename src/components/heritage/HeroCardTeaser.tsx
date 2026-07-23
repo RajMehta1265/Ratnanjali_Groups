@@ -63,11 +63,14 @@ export function HeroCardTeaser() {
                   className="h-full w-full object-cover transition-transform duration-700"
                   style={{
                     transform: isActive ? "scale(1)" : "scale(1.15)",
-                    filter: isActive ? "brightness(0.55)" : "brightness(0.25)",
+                    filter: isActive ? "none" : "brightness(0.25)",
                   }}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-basalt/90 via-basalt/50 to-basalt/30" />
+                <div 
+                  className="absolute inset-0 bg-gradient-to-t from-basalt/90 via-basalt/50 to-basalt/30 transition-opacity duration-700" 
+                  style={{ opacity: isActive ? 0 : 1 }}
+                />
               </div>
 
               {/* Carved corner brackets */}

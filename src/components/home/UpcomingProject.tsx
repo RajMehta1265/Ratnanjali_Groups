@@ -9,10 +9,10 @@ export function UpcomingProject() {
   const { upcomingProject } = homeData;
 
   return (
-    <section className="relative overflow-hidden bg-basalt py-28 text-white lg:py-40">
+    <section className="relative overflow-hidden bg-background py-28 text-foreground lg:py-40 border-t border-border/40">
       {/* Background textures */}
-      <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
-      <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-20" />
+      <div className="absolute inset-0 bg-grain pointer-events-none" />
+      <div className="absolute inset-0 bg-jali pointer-events-none opacity-40" />
       <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-gold/5 blur-[120px] pointer-events-none" />
       <div className="absolute -left-40 -bottom-40 h-[600px] w-[600px] rounded-full bg-gold-soft/5 blur-[120px] pointer-events-none" />
 
@@ -30,13 +30,13 @@ export function UpcomingProject() {
               </div>
 
               {/* Mahabharata resonance — Hastinapur: seat of legacy */}
-              <ShlokaKicker light className="mb-6">
+              <ShlokaKicker className="mb-6">
                 Built for generations, as the ancients built Hastinapur
               </ShlokaKicker>
 
-              <h2 className="font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl tracking-wide text-white">
+              <h2 className="font-display text-5xl leading-[1.02] sm:text-6xl lg:text-7xl tracking-wide text-foreground">
                 {upcomingProject.title} <br />
-                <em className="font-heading italic gold-gradient-text">{upcomingProject.titleItalic}</em>
+                <em className="not-italic font-heading italic gold-gradient-text">{upcomingProject.titleItalic}</em>
               </h2>
 
               <p className="mt-4 font-label text-[10px] uppercase tracking-[0.3em] text-gold/40">
@@ -44,21 +44,21 @@ export function UpcomingProject() {
               </p>
             </Reveal>
 
-            <Reveal delay={1} className="mt-8 max-w-xl space-y-6 font-body text-base leading-[1.8] text-white/65">
+            <Reveal delay={1} className="mt-8 max-w-xl space-y-6 font-body text-base leading-[1.8] text-muted-foreground">
               <p>{upcomingProject.description1}</p>
               <p>{upcomingProject.description2}</p>
             </Reveal>
 
             {/* Highlights as carved plaques */}
-            <Reveal delay={2} className="mt-10 grid grid-cols-2 gap-6 border-t border-gold/10 pt-8">
+            <Reveal delay={2} className="mt-10 grid grid-cols-2 gap-6 border-t border-gold/20 pt-8">
               {upcomingProject.highlights.map((h, i) => (
                 <div
                   key={h.title}
                   className="group border-l border-gold/30 pl-4 transition-all hover:border-gold/60"
                   style={{ animationDelay: `${i * 0.15}s` }}
                 >
-                  <h4 className="font-display text-lg text-gold-soft">{h.title}</h4>
-                  <p className="mt-1 font-body text-xs text-white/40 leading-relaxed">{h.desc}</p>
+                  <h4 className="font-display text-lg text-gold">{h.title}</h4>
+                  <p className="mt-1 font-body text-xs text-muted-foreground leading-relaxed">{h.desc}</p>
                 </div>
               ))}
             </Reveal>
@@ -68,14 +68,14 @@ export function UpcomingProject() {
               <div className="flex flex-wrap items-center gap-6">
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center gap-3 border border-gold/40 bg-gold/10 px-8 py-4 font-label text-[11px] uppercase tracking-[0.24em] text-gold-soft transition-all gold-shimmer hover:bg-gold/20 hover:border-gold/60"
+                  className="group inline-flex items-center gap-3 border border-gold/50 bg-gold/5 px-8 py-4 font-label text-[11px] uppercase tracking-[0.24em] text-gold transition-all gold-shimmer hover:bg-gold/15 hover:border-gold"
                 >
                   Register Interest
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="group inline-flex items-center gap-3 border border-white/15 px-8 py-4 font-label text-[11px] uppercase tracking-[0.24em] text-white/60 transition-all hover:border-white/30 hover:bg-white/5"
+                  className="group inline-flex items-center gap-3 border border-foreground/20 text-foreground/60 px-8 py-4 font-label text-[11px] uppercase tracking-[0.24em] transition-all hover:border-foreground/30 hover:bg-foreground/5"
                 >
                   Partner With Us
                 </Link>
@@ -95,7 +95,7 @@ export function UpcomingProject() {
                 <div className="absolute -inset-4 border border-gold/5 scale-95 opacity-0 transition-all duration-700 group-hover/visual:scale-100 group-hover/visual:opacity-100 pointer-events-none" />
 
                 {/* Image Container */}
-                <div className="relative aspect-[4/5] overflow-hidden border border-gold/15 bg-basalt shadow-elevated">
+                <div className="relative aspect-[4/5] overflow-hidden border border-gold/15 bg-white shadow-elevated">
                   {/* Carved corners */}
                   <div className="carved-corner carved-corner-tl" />
                   <div className="carved-corner carved-corner-tr" />
@@ -109,20 +109,20 @@ export function UpcomingProject() {
                     loading="lazy"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-basalt/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent pointer-events-none" />
 
                   {/* Overlay text */}
-                  <div className="absolute bottom-6 left-6 right-6 text-white z-20 flex justify-between items-end">
+                  <div className="absolute bottom-6 left-6 right-6 text-foreground z-20 flex justify-between items-end">
                     <div>
                       <span className="font-label text-[9px] uppercase tracking-[0.3em] text-gold/50">
                         Architectural Rendering
                       </span>
-                      <h3 className="font-display text-2xl mt-1 text-white tracking-wide">
+                      <h3 className="font-display text-2xl mt-1 text-foreground tracking-wide font-semibold">
                         {upcomingProject.title} {upcomingProject.titleItalic}
                       </h3>
                     </div>
                     {/* PRE-LAUNCH badge with gold pulse */}
-                    <span className="font-label text-[10px] uppercase tracking-[0.25em] text-gold gold-pulse px-3 py-1 border border-gold/30 bg-basalt/60">
+                    <span className="font-label text-[10px] uppercase tracking-[0.25em] text-gold gold-pulse px-3 py-1 border border-gold/30 bg-white/80">
                       PRE-LAUNCH
                     </span>
                   </div>

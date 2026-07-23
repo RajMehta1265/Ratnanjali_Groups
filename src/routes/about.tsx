@@ -37,7 +37,7 @@ function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://cdn.sanity.io/images/72qij255/production/a79b3a9ad16309e1af0de10353f33be64a039a83-739x415.jpg"
+            src="https://cdn.sanity.io/images/72qij255/production/16a616ac4b65d0d81a245a07da000ae12931fcb0-612x408.jpg"
             alt="Cover background"
             className="h-full w-full object-cover opacity-25"
           />
@@ -195,27 +195,27 @@ function AboutPage() {
       </section>
 
       {/* Timeline — carved stone with gold dharma-chakra nodes */}
-      <section className="relative bg-basalt py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
+      <section className="relative bg-stone-soft py-24 lg:py-32 overflow-hidden border-t border-border/40">
+        <div className="absolute inset-0 bg-grain pointer-events-none" />
 
         <div className="container-x relative mx-auto max-w-[800px]">
           <Reveal>
             <div className="text-center mb-16">
               <div className="eyebrow text-gold/50 mb-4">Our Journey</div>
-              <ShlokaKicker light>Each year, a spoke added to the wheel</ShlokaKicker>
+              <ShlokaKicker>Each year, a spoke added to the wheel</ShlokaKicker>
             </div>
           </Reveal>
 
           <div className="relative">
             {/* Central vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gold/15 -translate-x-1/2" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gold/30 -translate-x-1/2" />
 
             {timeline.map((t, i) => (
               <Reveal key={t.year} delay={(i % 3) as 0 | 1 | 2}>
                 <div className={`relative flex items-center gap-8 py-6 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                   <div className={`flex-1 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <div className="font-display text-2xl gold-gradient-text tracking-wide">{t.year}</div>
-                    <p className="mt-1 font-body text-sm text-gold-soft/40">{t.event}</p>
+                    <p className="mt-1 font-body text-sm text-muted-foreground">{t.event}</p>
                   </div>
 
                   {/* Dharma-chakra node */}

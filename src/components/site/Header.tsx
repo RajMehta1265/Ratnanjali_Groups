@@ -66,7 +66,7 @@ export function Header() {
                   }`}
                 >
                   {n.label}
-                  {/* Gold chisel-stroke active/hover underline */}
+                  {/* Gold active/hover underline */}
                   <span
                     className={`pointer-events-none absolute -bottom-1.5 left-0 h-[1.5px] bg-gradient-to-r from-gold to-gold/50 transition-all duration-500 ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"

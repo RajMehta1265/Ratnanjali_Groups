@@ -26,7 +26,7 @@ function ContactPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://cdn.sanity.io/images/72qij255/production/a79b3a9ad16309e1af0de10353f33be64a039a83-739x415.jpg"
+            src="https://cdn.sanity.io/images/72qij255/production/16a616ac4b65d0d81a245a07da000ae12931fcb0-612x408.jpg"
             alt="Cover background"
             className="h-full w-full object-cover opacity-25"
           />
@@ -101,18 +101,18 @@ function ContactPage() {
 
           {/* Office info */}
           <Reveal delay={1} className="lg:col-span-5">
-            <div className="relative border border-gold/10 bg-basalt p-10 overflow-hidden">
-              <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-20" />
-              <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
+            <div className="relative border border-gold/15 bg-stone-soft p-10 overflow-hidden">
+              <div className="absolute inset-0 bg-jali pointer-events-none opacity-30" />
+              <div className="absolute inset-0 bg-grain pointer-events-none" />
 
               <div className="relative">
-                <div className="font-label text-[10px] uppercase tracking-[0.3em] text-gold/50 mb-6">
+                <div className="font-label text-[10px] uppercase tracking-[0.3em] text-gold mb-6">
                   {office.eyebrow}
                 </div>
                 <div className="space-y-6 text-sm">
                   <div className="flex gap-4">
-                    <MapPin size={18} className="mt-0.5 shrink-0 text-gold/60" />
-                    <p className="font-body leading-relaxed text-gold-soft/60">
+                    <MapPin size={18} className="mt-0.5 shrink-0 text-gold" />
+                    <p className="font-body leading-relaxed text-foreground/80">
                       {office.address.map((line, i) => (
                         <span key={i}>
                           {line}
@@ -122,22 +122,22 @@ function ContactPage() {
                     </p>
                   </div>
                   <div className="flex gap-4">
-                    <Phone size={18} className="mt-0.5 shrink-0 text-gold/60" />
-                    <p className="font-body text-gold-soft/60">{office.phone}</p>
+                    <Phone size={18} className="mt-0.5 shrink-0 text-gold" />
+                    <p className="font-body text-foreground/80">{office.phone}</p>
                   </div>
                   <div className="flex gap-4">
-                    <Mail size={18} className="mt-0.5 shrink-0 text-gold/60" />
-                    <p className="font-body text-gold-soft/60">{office.email}</p>
+                    <Mail size={18} className="mt-0.5 shrink-0 text-gold" />
+                    <p className="font-body text-foreground/80">{office.email}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Map placeholder — dark/gold themed */}
-            <div className="mt-6 aspect-[4/3] w-full overflow-hidden border border-gold/10 bg-basalt relative">
-              <div className="absolute inset-0 bg-grain-dark" />
+            {/* Map placeholder — light sandstone themed */}
+            <div className="mt-6 aspect-[4/3] w-full overflow-hidden border border-gold/15 bg-stone-soft relative">
+              <div className="absolute inset-0 bg-grain pointer-events-none" />
               <div className="flex h-full w-full items-center justify-center">
-                <span className="font-label text-[10px] uppercase tracking-[0.28em] text-gold/30">
+                <span className="font-label text-[10px] uppercase tracking-[0.28em] text-gold/60">
                   {office.mapPlaceholder}
                 </span>
               </div>

@@ -24,7 +24,7 @@ function ProjectsPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://cdn.sanity.io/images/72qij255/production/a79b3a9ad16309e1af0de10353f33be64a039a83-739x415.jpg"
+            src="https://cdn.sanity.io/images/72qij255/production/16a616ac4b65d0d81a245a07da000ae12931fcb0-612x408.jpg"
             alt="Cover background"
             className="h-full w-full object-cover opacity-25"
           />

@@ -28,7 +28,7 @@ export function VideoShowcase() {
         <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
 
         {/* Dharma wheel background accent — Buddhist "balance & growth" thread */}
-        <div className="absolute right-[10%] top-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none">
+        <div className="absolute right-[10%] top-[15%] opacity-[0.04] pointer-events-none">
           <DharmaWheel size={400} animate slow color="var(--gold)" />
         </div>
 

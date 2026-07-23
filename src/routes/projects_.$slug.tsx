@@ -232,30 +232,30 @@ function ProjectDetailPage() {
       )}
 
       {/* Project Enquiry Section */}
-      <section className="relative bg-basalt py-24 text-white lg:py-32 overflow-hidden border-t border-gold/10">
-        <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
-        <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-20" />
+      <section className="relative bg-stone-soft py-24 text-foreground lg:py-32 overflow-hidden border-t border-gold/20">
+        <div className="absolute inset-0 bg-grain pointer-events-none" />
+        <div className="absolute inset-0 bg-jali pointer-events-none opacity-30" />
 
         <div className="container-x relative z-10 mx-auto max-w-[800px] text-center px-4">
           <Reveal>
-            <div className="eyebrow text-gold/60 tracking-[0.3em] text-[10px] uppercase font-label mb-4">Partner With Us</div>
-            <h2 className="font-display text-4xl leading-tight tracking-wide sm:text-5xl lg:text-6xl gold-gradient-text">
+            <div className="eyebrow text-gold tracking-[0.3em] text-[10px] uppercase font-label mb-4">Partner With Us</div>
+            <h2 className="font-display text-4xl leading-tight tracking-wide sm:text-5xl lg:text-6xl gold-gradient-text font-semibold">
               Enquire about {project.name}
             </h2>
-            <p className="mt-6 font-body text-sm sm:text-base leading-relaxed text-gold-soft/50">
+            <p className="mt-6 font-body text-sm sm:text-base leading-relaxed text-muted-foreground">
               Arrange an exclusive private walkthrough or speak directly with our luxury estate consultants.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-6">
               <a
                 href="tel:+917990748656"
-                className="inline-flex items-center gap-3 border border-gold/30 px-8 py-3.5 font-label text-[11px] uppercase tracking-[0.24em] text-gold-soft hover:bg-gold/10 hover:border-gold/60 transition-all duration-300"
+                className="inline-flex items-center gap-3 border border-gold/50 px-8 py-3.5 font-label text-[11px] uppercase tracking-[0.24em] text-gold hover:bg-gold/5 hover:border-gold transition-all duration-300"
               >
                 <Phone size={14} /> Call Agent
               </a>
               <a
                 href="mailto:info@ratnanjaligroup.com"
-                className="inline-flex items-center gap-3 border border-gold/30 px-8 py-3.5 font-label text-[11px] uppercase tracking-[0.24em] text-gold-soft hover:bg-gold/10 hover:border-gold/60 transition-all duration-300"
+                className="inline-flex items-center gap-3 border border-gold/50 px-8 py-3.5 font-label text-[11px] uppercase tracking-[0.24em] text-gold hover:bg-gold/5 hover:border-gold transition-all duration-300"
               >
                 <Mail size={14} /> Send Inquiry
               </a>

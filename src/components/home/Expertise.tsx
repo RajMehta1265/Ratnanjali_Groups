@@ -12,7 +12,7 @@ export function Expertise() {
       {/* Subtle grain texture */}
       <div className="absolute inset-0 bg-grain pointer-events-none" />
 
-      <div className="container-x relative mx-auto max-w-[1400px]">
+      <div className="relative mx-auto w-[90%] lg:w-[85%] max-w-[1600px]">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <Reveal className="max-w-2xl">
             <div className="eyebrow eyebrow-gold mb-4"><span className="rule" />Development Expertise</div>
@@ -35,7 +35,7 @@ export function Expertise() {
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:gap-8">
           {expertise.sectors.map((s, i) => (
             <Reveal key={s.title} delay={(i % 4) as 0 | 1 | 2 | 3}>
-              <Link to={s.to} className="group relative block aspect-[4/3] overflow-hidden bg-basalt carved-frame-hover">
+              <Link to={s.to} className="group relative block aspect-[4/3] overflow-hidden bg-white border border-gold/15 hover:border-gold/30 transition-all duration-300 carved-frame-hover shadow-sm">
                 {/* Carved corner brackets */}
                 <div className="carved-corner carved-corner-tl" />
                 <div className="carved-corner carved-corner-tr" />
@@ -43,19 +43,19 @@ export function Expertise() {
                 <div className="carved-corner carved-corner-br" />
 
                 <img src={s.img} alt={s.title} className="img-zoom h-full w-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-basalt/90 via-basalt/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/40 to-white/10" />
 
-                <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
+                <div className="absolute inset-0 flex flex-col justify-between p-8 text-foreground">
                   <div className="flex items-start justify-between">
-                    <span className="font-display text-xl gold-gradient-text opacity-80">{s.num}</span>
+                    <span className="font-display text-xl text-gold font-semibold">{s.num}</span>
                     <ArrowUpRight
                       size={22}
-                      className="text-gold-soft/50 transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold-soft"
+                      className="text-gold-soft transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold"
                     />
                   </div>
                   <div>
-                    <h3 className="font-display text-3xl tracking-wide sm:text-4xl">{s.title}</h3>
-                    <p className="mt-3 max-w-md font-body text-sm leading-relaxed text-white/75">
+                    <h3 className="font-display text-3xl tracking-wide sm:text-4xl text-foreground font-semibold">{s.title}</h3>
+                    <p className="mt-3 max-w-md font-body text-sm leading-relaxed text-muted-foreground">
                       {s.desc}
                     </p>
                     <div className="mt-5 h-px w-12 bg-gold/50 transition-all duration-500 group-hover:w-24 group-hover:bg-gold" />
