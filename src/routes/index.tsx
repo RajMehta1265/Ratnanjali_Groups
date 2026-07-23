@@ -7,7 +7,6 @@ import { ProudProjects } from "@/components/home/ProudProjects";
 import { UpcomingProject } from "@/components/home/UpcomingProject";
 import { WhyChoose } from "@/components/home/WhyChoose";
 import { Stats } from "@/components/home/Stats";
-import { VideoShowcase } from "@/components/home/VideoShowcase";
 import { ContactCTA } from "@/components/home/ContactCTA";
 
 export const Route = createFileRoute("/")({
@@ -29,7 +28,6 @@ function Index() {
       <ProudProjects />
       <UpcomingProject />
       <WhyChoose />
-      <VideoShowcase />
       <Stats />
       <ContactCTA />
     </PageShell>
