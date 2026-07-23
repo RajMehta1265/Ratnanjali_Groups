@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal } from "@/components/site/RevealOnScroll";
 import { aboutData } from "@/data/about";
@@ -29,6 +30,43 @@ const timeline = [
 
 function AboutPage() {
   const { hero, ourStory, missionVision, founders, partners } = aboutData;
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeItems, setActiveItems] = useState<number[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Start counting progress once the section enters the middle of the screen
+      const startTrigger = windowHeight * 0.8;
+      const endTrigger = windowHeight * 0.3;
+
+      const totalDistance = rect.height;
+      const currentPos = startTrigger - rect.top;
+
+      const progress = Math.max(0, Math.min(1, currentPos / (totalDistance - endTrigger + startTrigger * 0.2)));
+      setScrollProgress(progress);
+
+      // Check which items are scrolled past the trigger point (65% of viewport height)
+      const items = timelineRef.current.querySelectorAll(".timeline-item");
+      const active: number[] = [];
+      items.forEach((item, index) => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top <= windowHeight * 0.65) {
+          active.push(index);
+        }
+      });
+      setActiveItems(active);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Trigger initially
+    setTimeout(handleScroll, 100);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <PageShell>
@@ -195,38 +233,115 @@ function AboutPage() {
       </section>
 
       {/* Timeline — carved stone with gold dharma-chakra nodes */}
-      <section className="relative bg-stone-soft py-24 lg:py-32 overflow-hidden border-t border-border/40">
+      <section ref={timelineRef} className="relative bg-stone-soft py-24 lg:py-32 overflow-hidden border-t border-border/40">
         <div className="absolute inset-0 bg-grain pointer-events-none" />
 
-        <div className="container-x relative mx-auto max-w-[800px]">
+        <div className="container-x relative mx-auto max-w-[850px]">
           <Reveal>
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <div className="eyebrow text-gold/50 mb-4">Our Journey</div>
-              <ShlokaKicker>Each year, a spoke added to the wheel</ShlokaKicker>
+              <ShlokaKicker light>Each year, a spoke added to the wheel</ShlokaKicker>
             </div>
           </Reveal>
 
           <div className="relative">
-            {/* Central vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gold/30 -translate-x-1/2" />
+            {/* Background vertical line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gold/15 -translate-x-1/2" />
+            
+            {/* Animated gold vertical line based on scroll progress */}
+            <div 
+              className="absolute left-8 md:left-1/2 top-0 w-[2px] bg-gradient-to-b from-gold via-gold/80 to-gold-soft -translate-x-1/2 origin-top transition-transform duration-300 ease-out" 
+              style={{ transform: `scaleY(${scrollProgress})`, height: '100%' }}
+            />
 
-            {timeline.map((t, i) => (
-              <Reveal key={t.year} delay={(i % 3) as 0 | 1 | 2}>
-                <div className={`relative flex items-center gap-8 py-6 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                  <div className={`flex-1 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                    <div className="font-display text-2xl gold-gradient-text tracking-wide">{t.year}</div>
-                    <p className="mt-1 font-body text-sm text-muted-foreground">{t.event}</p>
+            <div className="space-y-12">
+              {timeline.map((t, i) => {
+                const isActive = activeItems.includes(i);
+                return (
+                  <div 
+                    key={t.year} 
+                    className="timeline-item relative flex flex-col md:flex-row md:items-center gap-6 md:gap-8 pl-16 md:pl-0"
+                  >
+                    {/* Left side milestone card (desktop only, even index) */}
+                    <div className="hidden md:block flex-1 text-right">
+                      {i % 2 === 0 ? (
+                        <div 
+                          className={`p-6 rounded-lg border bg-stone-light/40 backdrop-blur-sm transition-all duration-700 ${
+                            isActive 
+                              ? 'border-gold/30 shadow-[0_4px_20px_rgba(196,164,105,0.15)] translate-y-0 opacity-100' 
+                              : 'border-transparent opacity-30 translate-y-4'
+                          } hover:border-gold/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(196,164,105,0.25)]`}
+                        >
+                          <div className={`font-display text-3xl font-bold tracking-wide transition-colors duration-500 ${isActive ? 'gold-gradient-text' : 'text-stone-dark/40'}`}>
+                            {t.year}
+                          </div>
+                          <p className="mt-2 font-body text-[15px] font-medium leading-relaxed text-stone-dark">
+                            {t.event}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="w-full" />
+                      )}
+                    </div>
+
+                    {/* Dharma-chakra node */}
+                    <div 
+                      className={`absolute left-8 -translate-x-1/2 top-6 md:relative md:left-auto md:translate-x-0 md:top-auto z-10 flex-shrink-0 flex items-center justify-center w-16 h-16 transition-all duration-700 ${
+                        isActive 
+                          ? 'scale-125 rotate-[180deg] filter drop-shadow-[0_0_8px_rgba(196,164,105,0.5)]' 
+                          : 'scale-100 opacity-30'
+                      }`}
+                    >
+                      <div className={`absolute inset-0 rounded-full border transition-all duration-700 ${isActive ? 'border-gold/40 bg-gold/5 scale-110' : 'border-transparent'}`} />
+                      <DharmaWheel size={isActive ? 32 : 26} color={isActive ? "var(--gold)" : "var(--gold-soft)"} />
+                    </div>
+
+                    {/* Right side milestone card (desktop odd items) / Always visible card (mobile) */}
+                    <div className="flex-1 text-left w-full">
+                      {/* Desktop layout */}
+                      <div className="hidden md:block">
+                        {i % 2 !== 0 ? (
+                          <div 
+                            className={`p-6 rounded-lg border bg-stone-light/40 backdrop-blur-sm transition-all duration-700 ${
+                              isActive 
+                                ? 'border-gold/30 shadow-[0_4px_20px_rgba(196,164,105,0.15)] translate-y-0 opacity-100' 
+                                : 'border-transparent opacity-30 translate-y-4'
+                            } hover:border-gold/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(196,164,105,0.25)]`}
+                          >
+                            <div className={`font-display text-3xl font-bold tracking-wide transition-colors duration-500 ${isActive ? 'gold-gradient-text' : 'text-stone-dark/40'}`}>
+                              {t.year}
+                            </div>
+                            <p className="mt-2 font-body text-[15px] font-medium leading-relaxed text-stone-dark">
+                              {t.event}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="w-full" />
+                        )}
+                      </div>
+
+                      {/* Mobile layout */}
+                      <div className="md:hidden">
+                        <div 
+                          className={`p-6 rounded-lg border bg-stone-light/40 backdrop-blur-sm transition-all duration-700 ${
+                            isActive 
+                              ? 'border-gold/30 shadow-[0_4px_20px_rgba(196,164,105,0.15)] translate-y-0 opacity-100' 
+                              : 'border-transparent opacity-30 translate-y-4'
+                          } hover:border-gold/60 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(196,164,105,0.25)]`}
+                        >
+                          <div className={`font-display text-2xl font-bold tracking-wide transition-colors duration-500 ${isActive ? 'gold-gradient-text' : 'text-stone-dark/40'}`}>
+                            {t.year}
+                          </div>
+                          <p className="mt-2 font-body text-[14px] font-medium leading-relaxed text-stone-dark">
+                            {t.event}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Dharma-chakra node */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <DharmaWheel size={28} color="var(--gold)" opacity={0.5} />
-                  </div>
-
-                  <div className="flex-1" />
-                </div>
-              </Reveal>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
