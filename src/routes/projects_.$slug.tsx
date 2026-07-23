@@ -31,14 +31,21 @@ function ProjectDetailPage() {
       {/* Dynamic cover section */}
       <section className="relative h-[65vh] min-h-[480px] w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Blurred background image to cover full container */}
+          <img
+            src={project.cover}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-25 blur-md scale-110"
+          />
+          {/* Centered contained foreground image to show it fully without cutting */}
           <img
             src={project.cover}
             alt={project.name}
-            className="ken-burns h-full w-full object-cover opacity-60 object-center"
+            className="relative mx-auto h-full w-auto object-contain opacity-75 ken-burns"
           />
           {/* Dark cinematic overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-basalt/60 via-basalt/30 to-basalt/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/40 via-transparent to-basalt/60" />
           <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
         </div>
 
