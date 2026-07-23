@@ -41,7 +41,7 @@ function ProjectsPage() {
           <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-5" />
         </div>
 
-        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center">
+        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center pt-28 pb-12">
           <Reveal>
             <div className="flex items-center justify-center gap-5 mb-4">
               <span className="h-px w-10 bg-gold/40" />

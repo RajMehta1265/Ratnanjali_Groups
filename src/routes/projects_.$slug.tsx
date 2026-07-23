@@ -49,7 +49,7 @@ function ProjectDetailPage() {
           <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
         </div>
 
-        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center px-4">
+        <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center px-4 pt-28 pb-12">
           <Reveal>
             <Link
               to="/projects"
