@@ -20,18 +20,18 @@ function ProjectsPage() {
   return (
     <PageShell>
       {/* Hero header */}
-      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
+      <section className="relative h-[65vh] min-h-[480px] w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
             src="https://cdn.sanity.io/images/72qij255/production/16a616ac4b65d0d81a245a07da000ae12931fcb0-612x408.jpg"
             alt="Cover background"
-            className="h-full w-full object-cover opacity-25"
+            className="h-full w-full object-cover opacity-60 object-center"
           />
           {/* Dark overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-basalt/80 via-basalt/60 to-basalt/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/60 via-basalt/30 to-basalt/80" />
           <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
-          <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-15" />
+          <div className="absolute inset-0 bg-jali-dark pointer-events-none opacity-10" />
         </div>
 
         <div className="container-x relative z-10 mx-auto max-w-[1400px] flex flex-col items-center justify-center text-center">

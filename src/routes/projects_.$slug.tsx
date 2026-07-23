@@ -29,16 +29,16 @@ function ProjectDetailPage() {
   return (
     <PageShell>
       {/* Dynamic cover section */}
-      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
+      <section className="relative h-[65vh] min-h-[480px] w-full flex items-center justify-center overflow-hidden bg-basalt text-white">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
             src={project.cover}
             alt={project.name}
-            className="ken-burns h-full w-full object-cover opacity-40"
+            className="ken-burns h-full w-full object-cover opacity-60 object-center"
           />
           {/* Dark cinematic overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-basalt/60 via-basalt/30 to-basalt/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-basalt/60 via-basalt/30 to-basalt/80" />
           <div className="absolute inset-0 bg-grain-dark pointer-events-none" />
         </div>
 
