@@ -23,7 +23,7 @@ const timeline = [
   { year: "2016", event: "Expansion into commercial development" },
   { year: "2019", event: "Ratnaruchi Vatika — riverside living at Paldi" },
   { year: "2022", event: "Ratnanjali Square completed — new address of success" },
-  { year: "2024", event: "Hastinapur Village announced — five iconic towers" },
+  { year: "2024", event: "Hastinapur The Royal Legacy announced — five iconic towers" },
   { year: "2025", event: "Ratnanjali Solitaire & Ayodhya underway" },
 ];
 
